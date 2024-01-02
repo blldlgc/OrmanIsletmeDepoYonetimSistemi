@@ -7,7 +7,7 @@ public class GirisVeKayit {
     private int secim;
     private static final String DOSYA_YOLU = "kullanicilar.csv";
 
-    public String GirisVeKayit() {
+    public String GirisVeKayit() { //Kaydolmayı ve giriş yapmayı sağlar. Kullanıcı biligilerini alır.
         Scanner tarayici = new Scanner(System.in);
 
         while (true) {
@@ -53,7 +53,7 @@ public class GirisVeKayit {
         return secim;
     }
 
-    public static boolean girisYap(String kullaniciAdi, String sifre) {
+    public static boolean girisYap(String kullaniciAdi, String sifre) { // Girilen bilgilerin kullanıcılar dosyasında olup olmadığını kontrol eder.
         try (BufferedReader okuyucu = new BufferedReader(new FileReader(DOSYA_YOLU))) {
             String satir;
             while ((satir = okuyucu.readLine()) != null) {
@@ -73,7 +73,7 @@ public class GirisVeKayit {
         return yetki;
     }
 
-    private static void kullaniciEkle(String kullaniciAdi, String sifre) {
+    private static void kullaniciEkle(String kullaniciAdi, String sifre) { // Yeni kullanıcılara yetkilendirme sağlar.
         try (PrintWriter yazici = new PrintWriter(new FileWriter(DOSYA_YOLU, true))) {
             yazici.println(kullaniciAdi + "," + sifre + ",musteri");
         } catch (IOException e) {
