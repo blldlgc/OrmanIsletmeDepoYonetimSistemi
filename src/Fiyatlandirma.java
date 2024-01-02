@@ -7,24 +7,12 @@ abstract class Fiyatlandirma {
         this.hacim = hacim;
     }
 
-    public Fiyatlandirma() {
-        istifFiyatiniHesapla();
-
-    }
-
-    public double getBirimFiyat() {
-        return birimFiyat;
-    }
-
-    public double getHacim() {
-        return hacim;
-    }
-
-    public double istifFiyatiniHesapla() {
+    public double istifFiyatiniHesapla() {// istif fiyatını döndürür
         return birimFiyat * hacim;
     }
 }
 
+//ağaç türlerine ait sınıfların fiyatlandırma soyut sınıfına extend edilmesi
 class Mese extends Fiyatlandirma {
     public Mese(double hacim) {
         super(3053, hacim);

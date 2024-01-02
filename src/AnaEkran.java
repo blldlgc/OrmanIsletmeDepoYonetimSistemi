@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class AnaEkran{
 
-    public void AnaEkran(){
+    public void AnaEkran(){ //Sisteme giriş ekranıdır. Kullanıcıya üyelik ve giriş ekranı sunar.
         GirisVeKayit giris = new GirisVeKayit();
         while (true){
             System.out.println("\nOrman İşletme Depo Yönetim Bilgi Sistemi'ne Hoşgeldiniz! ");
@@ -33,7 +33,7 @@ public class AnaEkran{
         }
     }
 
-    private void adminEkrani(){
+    private void adminEkrani(){ //Yönetici ekranı arayüzünü kullanıcıya sunar. İşlemler için seçim ekranı oluşturur.
         System.out.println("Admin ekranına hoşgeldiniz");
         Scanner scanner = new Scanner(System.in);
 
@@ -84,7 +84,7 @@ public class AnaEkran{
         }
     }
 
-    private void isciEkrani(){
+    private void isciEkrani(){ //İşçi ekranı arayüzünü kullanıcıya sunar. İşlemler için seçim ekranı oluşturur.
         System.out.println("İşçi ekranına hoşgeldiniz");
         Scanner scanner = new Scanner(System.in);
 
@@ -102,7 +102,7 @@ public class AnaEkran{
             switch (secim){
                 case 1:
                     SevkGirme sevk = new SevkGirme();
-                    sevk.sevkYazdir();
+                    sevk.sevkAl();
                     break;
                 case 2:
                     AgacSayaci agacSayi = new AgacSayaci();
@@ -113,7 +113,7 @@ public class AnaEkran{
         }
     }
 
-    private void musteriEkrani(){
+    private void musteriEkrani(){ //Müşteri ekranı arayüzünü kullanıcıya sunar. İşlemler için seçim ekranı oluşturur.
         System.out.println("Müşteri ekranına hoşgeldiniz");
         Scanner scanner = new Scanner(System.in);
         while (true){

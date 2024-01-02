@@ -18,6 +18,7 @@ class Agac {
         this.adet = adet;
     }
 
+    // ağaç verileriyle ilgili get metodlarının tanımlanması
     public String getTur() {
         return tur;
     }
@@ -41,7 +42,7 @@ class Agac {
         return adet;
     }
 
-    public double getFiyat(){
+    public double getFiyat(){ //ağaç istif fiyatlarının hesaplanması
         String tur = getTur();
         switch (tur){
                     case "cam": Cam cam = new Cam(getHacim());
@@ -71,7 +72,7 @@ class Agac {
     }
 }
 
-class AgacFactory {
+class AgacFactory { //sevk girme metodunda csv dosyasından okunan ağaçların değişkenlere atanması
     public static Agac createAgac(String tur, double cap, double kabuk, double boy, double hacim, int adet) {
         switch (tur) {
             case "cam":

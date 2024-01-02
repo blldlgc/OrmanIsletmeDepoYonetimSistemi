@@ -4,9 +4,9 @@ import java.io.*;
 import java.nio.file.*;
 import java.util.stream.Collectors;
 
-public class SatisEkrani {
+public class SatisEkrani { // Müşterinin satış işlemi için kişisel bilgilerini alır.
 
-    // Bireysel müşteri için bilgi alma ve yazdırma
+    // Bireysel müşteri bilgilerini alır. Alınan biligileri dosyaya ekler.
     public static void musteriBilgileriniAl(String ad, String soyad, String tc) {
         System.out.println("Bireysel müşteri bilgileri alındı: " + ad + " " + soyad + " - TC: " + tc);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("satinalma_bilgileri.csv", true))) {
@@ -19,7 +19,7 @@ public class SatisEkrani {
         }
     }
 
-    // Şirket müşterisi için bilgi alma ve yazdırma
+    // Şirket müşterilerinin bilgilerini alır.Alınan biligileri dosyaya ekler.
     public static void musteriBilgileriniAl(String ad, String soyad, String tc, String sirketAdi) {
         System.out.println("Şirket müşterisi bilgileri alındı: " + ad + " " + soyad + " - TC: " + tc + " - Şirket Adı: " + sirketAdi);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("satinalma_bilgileri.csv", true))) {
@@ -32,7 +32,7 @@ public class SatisEkrani {
         }
     }
 
-    // Telefon numarasını da içeren genel metot
+    // Şirket kullanıcılarının bilgilerini ve telefon numarasını. Alınan biligileri dosyaya ekler.
     public static void musteriBilgileriniAl(String ad, String soyad, String tc, String sirketAdi, String telefon) {
         System.out.println("Genel müşteri bilgileri alındı: " + ad + " " + soyad + " - TC: " + tc + " - Şirket Adı: " + sirketAdi + " - Telefon: " + telefon);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("satinalma_bilgileri.csv", true))) {
@@ -44,7 +44,7 @@ public class SatisEkrani {
             System.err.println("Hata: " + e.getMessage());
         }
     }
-    public static void Satis() {
+    public static void Satis() { //Satın almak istediği ağaç türü bilgisini müşteriden alır.
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -92,7 +92,7 @@ public class SatisEkrani {
         }
     }
 
-    public static void bilgiAlma() {
+    public static void bilgiAlma() { // Müşteriden kişisel bilgilerini alır.
         boolean devam = true;
         while (devam) {
             try {
@@ -147,7 +147,7 @@ public class SatisEkrani {
             }
         }
     }
-            public static void urunSecme(List<Agac> agaclar, String dosyaAdi, int tur) {
+            public static void urunSecme(List<Agac> agaclar, String dosyaAdi, int tur) { // Ağaç dosyalarındaki bilgiyi okuyarak müşteriye ağaç listesi çıkarır.
         Scanner scanner = new Scanner(System.in);
 
         if (!agaclar.isEmpty()) {
@@ -169,13 +169,13 @@ public class SatisEkrani {
                         ", Kabuk Kalınlığı: " + secilenAgac.getKabuk() + ", Boy: " + secilenAgac.getBoy() +
                         ", Hacim: " + secilenAgac.getHacim() + ", Adet: " + secilenAgac.getAdet() + ", Fiyat: " + secilenAgac.getFiyat() + " TL");
 
-                // Satilanagaclar.csv dosyasına yaz
+                // Satilanagaclar.csv dosyasına yazar.
                 csvDosyasinaYaz("satilanagaclar.csv", secilenAgac);
 
-                // Satın alınan ağacın satırını CSV dosyasından sil
+                // Satın alınan ağacın satırını CSV dosyasından siler.
                 csvDosyasindanSil(dosyaAdi, secilenAgaclik);
 
-                // Satın alınan ağacı listeden kaldır
+                // Satın alınan ağacı listeden kaldırır.
                 agaclar.remove(secilenAgaclik - 1);
 
                 System.out.println("Satın alma işlemi tamamlandı.");
@@ -189,7 +189,7 @@ public class SatisEkrani {
     }
 
 
-    public static void csvDosyasindanSil(String dosya, int satirNo) {
+    public static void csvDosyasindanSil(String dosya, int satirNo) { // Seçilen ağaç istifini dosyadan silinmesini sağlar.
         Path dosyaYolu = Paths.get(dosya);
         List<String> lines;
         satirNo--;
@@ -208,7 +208,7 @@ public class SatisEkrani {
     }
 
 
-        private static void bosSatirlariSil(String dosyaAdi) {
+        private static void bosSatirlariSil(String dosyaAdi) { // Silinen istifin boş kalan satırını dosyadan siler.
             try {
                 Path filePath = Paths.get(dosyaAdi);
 
@@ -227,7 +227,7 @@ public class SatisEkrani {
 
 
 
-    private static void csvDosyasinaYaz(String dosyaAdi, Agac agac) {
+    private static void csvDosyasinaYaz(String dosyaAdi, Agac agac) { // Satın alınan istifleri satılan ağaçlar dosayasına kaydeder.
         try (FileWriter writer = new FileWriter(dosyaAdi, true)) {
             writer.append(agac.getTur()).append(",");
             writer.append(String.valueOf(agac.getCap())).append(",");

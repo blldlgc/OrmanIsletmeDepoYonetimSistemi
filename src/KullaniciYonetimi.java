@@ -8,12 +8,13 @@ class Kullanici {
     private String sifre;
     private String erisimSeviyesi;
 
-    public Kullanici(String ad, String sifre, String erisimSeviyesi) {
+    public Kullanici(String ad, String sifre, String erisimSeviyesi) { // verileri çağırmaya yarayan kod
         this.ad = ad;
         this.sifre = sifre;
         this.erisimSeviyesi = erisimSeviyesi;
     }
 
+    // kullanıcı girişi için gerekli set ve get metodları
     public String getAd() {
         return ad;
     }
@@ -45,16 +46,16 @@ class Kullanici {
 }
 
 
-class KullaniciYonetimi {
+class KullaniciYonetimi { // Kullanıcı yönetim ekranı
     private List<Kullanici> kullanicilar;
     private String dosyaAdi = "kullanicilar.csv";
 
-    public KullaniciYonetimi() {
+    public KullaniciYonetimi() { // Kullanıları diziye aktarma
         this.kullanicilar = new ArrayList<>();
         kullanicilariYukle();
     }
 
-    private void kullanicilariYukle() {
+    private void kullanicilariYukle() { // kullanıcıları csv dosyasından okuyup virgüle göre parçalayan kod
         try (BufferedReader okuyucu = new BufferedReader(new FileReader(dosyaAdi))) {
             String satir;
             while ((satir = okuyucu.readLine()) != null) {
@@ -71,13 +72,13 @@ class KullaniciYonetimi {
         }
     }
 
-    public void kullaniciEkle(String ad, String sifre, String erisimSeviyesi) {
+    public void kullaniciEkle(String ad, String sifre, String erisimSeviyesi) { // yeni kullanıcı ekleme
         Kullanici yeniKullanici = new Kullanici(ad, sifre, erisimSeviyesi);
         kullanicilar.add(yeniKullanici);
         kullanicilariKaydet();
     }
 
-    public void kullaniciSil(String ad) {
+    public void kullaniciSil(String ad) { // kullanıcı silme
         boolean kullaniciBulundu = kullanicilar.removeIf(kullanici -> kullanici.getAd().equals(ad));
         kullanicilariKaydet();
 
@@ -88,7 +89,7 @@ class KullaniciYonetimi {
         }
     }
 
-    private void kullanicilariKaydet() {
+    private void kullanicilariKaydet() { // yapılan değişiklikleri kaydeden kod
         try (BufferedWriter yazici = new BufferedWriter(new FileWriter(dosyaAdi))) {
             for (Kullanici kullanici : kullanicilar) {
                 yazici.write(kullanici.toString());
@@ -103,7 +104,7 @@ class KullaniciYonetimi {
         return kullanicilar;
     }
 
-    public class YetkiSeviyesiAl {
+    public class YetkiSeviyesiAl { // kullanıcının yetki seviyesini atayan kod
         public static void main(String[] args) {
             String yetki = yetkiSeviyesiAl();
             System.out.println("Seçilen yetki: " + yetki);
@@ -141,8 +142,7 @@ class KullaniciYonetimi {
         }
     }
 
-    // Diğer kullanıcı yönetimi metotları buraya eklenebilir
-    public void yonetimEkrani() {
+    public void yonetimEkrani() { // kullanıcı yönetim ekranı
         System.out.println("\nKullanıcı Yönetim Ekranı");
         Scanner scanner = new Scanner(System.in);
 
@@ -158,13 +158,13 @@ class KullaniciYonetimi {
             }
 
             switch (secim) {
-                case 1:
+                case 1: // kullanıcıları görüntüleme
                     List<Kullanici> kullaniciListesi = getKullanicilar();
                     for (Kullanici kullanici : kullaniciListesi) {
                         System.out.println(kullanici.getAd() + ", " + kullanici.getSifre() + ", " + kullanici.getErisimSeviyesi());
                     }
                     break;
-                case 2:
+                case 2: // kullanıcı ekleme
                     System.out.print("Yeni kullanıcı adınızı girin: ");
                     String yeniKullaniciAdi = scanner.next();
 
@@ -175,7 +175,7 @@ class KullaniciYonetimi {
 
                     kullaniciEkle(yeniKullaniciAdi, yeniSifre, yetki);
                     break;
-                case 3:
+                case 3: // kullanıcı silme
                     System.out.print("Silmek istediğiniz kullanıcının kullanıcı adını girin: ");
                     String kullaniciAdi = scanner.next();
                     kullaniciSil(kullaniciAdi);

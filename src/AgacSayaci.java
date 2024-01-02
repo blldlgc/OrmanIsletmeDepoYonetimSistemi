@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class AgacSayaci {
-    public void AgacSayaci(){
+    public void AgacSayaci(){ // Hangi ağaç istifinin sorgulanacağı bilgisi kullanıcıdan alınır.
         Scanner scanner = new Scanner(System.in);
         while (true){
             System.out.println("\nHangi ağaç türünü sorgulamak istiyorsunuz:");
@@ -35,7 +35,7 @@ public class AgacSayaci {
         }
 
     }
-    public void okumaCam() {
+    public void okumaCam() { //Çam dosyasından kaç adet istif olduğu sorgulanır.
         String csvDosyaYolu = "cam.csv";
         try (BufferedReader br = new BufferedReader(new FileReader(csvDosyaYolu))) {
             int satirSayisi = 0;
@@ -47,7 +47,7 @@ public class AgacSayaci {
             e.printStackTrace();
         }
     }
-    public void okumaMese() {
+    public void okumaMese() { //Meşe dosyasından kaç adet istif olduğu sorgulanır.
         String csvDosyaYolu = "mese.csv";
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvDosyaYolu))) {
@@ -59,7 +59,7 @@ public class AgacSayaci {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }public void okumaKayin() {
+    }public void okumaKayin() { //Kayın dosyasından kaç adet istif olduğu sorgulanır.
         String csvDosyaYolu = "kayin.csv";
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvDosyaYolu))) {
@@ -71,7 +71,7 @@ public class AgacSayaci {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }public void okumaLadin() {
+    }public void okumaLadin() { //Ladin dosyasından kaç adet istif olduğu sorgulanır.
         String csvDosyaYolu = "ladin.csv";
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvDosyaYolu))) {

@@ -10,11 +10,11 @@ import java.util.Scanner;
 public class SevkGirme {
 
 
-    public static void sevkAl() {//todo sevk girme while loop yapılacak
-        // Kullanıcıdan yeni ağaç bilgileri alma
+    public static void sevkAl() {
+        // Kullanıcıdan yeni ağaç bilgilerini alır
         Agac yeniAgac = kullanicidanAgacBilgisiAl();
 
-        // Yeni ağacı ağaç türüne göre CSV dosyasına ekleme
+        // Yeni ağacı ağaç türüne göre CSV dosyasına ekler
         yeniAgac.saveToCsv(getCsvDosyaAdi(yeniAgac.getTur()));
     }
 
@@ -23,7 +23,7 @@ public class SevkGirme {
 
         while (true) {
             try {
-                // Kullanıcıdan ağaç türü seçme
+                // Kullanıcıya ağaç türü seçtirir
                 System.out.println("Bilgilerini görüntülemek isteyeceğiniz ağaç türünü seçiniz: \n1:Çam 2:Meşe 3:Kayın 4:Ladin");
                 System.out.print("Seçim: ");
                 int selectedTur = scanner.nextInt();
@@ -44,10 +44,10 @@ public class SevkGirme {
                     default:
                         System.out.println("Geçersiz seçim. Lütfen 1 ile 4 arasında bir sayı girin.");
                         scanner.nextLine();
-                        continue; // Yanlış giriş durumunda tekrar döngü başına gitmesini
+                        continue; // Yanlış giriş durumunda tekrar döngü başına gitmesini sağlar
                 }
 
-                // CSV dosyasından seçilen ağaç türündeki ağaç verilerini okuma
+                // CSV dosyasından seçilen ağaç türündeki ağaç verilerini okur
                 List<Agac> agaclar = csvDosyasindanAgaclariOku(dosya);
                 System.out.println("Ağaç Listesi:");
                 int i = 1;
@@ -55,7 +55,7 @@ public class SevkGirme {
                     System.out.println(i++ + ". Ağaç: Tür: " + agac.getTur() + ", Çap: " + agac.getCap() + ", Kabuk Kalınlığı: " + agac.getKabuk() + ", Boy: " + agac.getBoy() + ", Hacim: " + agac.getHacim() + ", Adet:" + agac.getAdet());
                 }
 
-                // Kullanıcıdan çıkmak isteyip istemediğini sorma
+                // Kullanıcıdan çıkmak isteyip istemediğini sorar
                 System.out.print("Başka bir ağaç türü sorgulamak istiyor musunuz? (E/H): ");
                 String devamEt = scanner.next().toLowerCase();
 
@@ -76,7 +76,7 @@ public class SevkGirme {
         try (BufferedReader reader = new BufferedReader(new FileReader(dosya))) {
             String line;
 
-            // CSV dosyasından ağaç verilerini okuma
+            // CSV dosyasından ağaç verilerini okur
             while ((line = reader.readLine()) != null) {
                 String[] fields = line.split(",");
                 if (fields.length == 6) {
@@ -101,7 +101,7 @@ public class SevkGirme {
     }
 
     static void csvDosyasinaAgacEkle(Agac agac, String dosyaAdi) {
-        // CSV dosyasına ağaçları ekleme
+        // ağaç türünün CSV dosyasına ağaçları ekler
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(dosyaAdi, true))) {
             if (new FileReader(dosyaAdi).read() != -1) {
                 writer.newLine();
@@ -113,14 +113,14 @@ public class SevkGirme {
         }
     }
 
-    private static String turkceKarakterleriIngilizceyeCevir(String tur) {
+    private static String turkceKarakterleriIngilizceyeCevir(String tur) {//ağaç eklerken girilen türkçe karakterleri düzeltir
         tur = tur.replace("ç", "c");
         tur = tur.replace("ı", "i");
         tur = tur.replace("ş", "s");
         return tur;
     }
 
-    private static Agac kullanicidanAgacBilgisiAl() {
+    private static Agac kullanicidanAgacBilgisiAl() { // kullanıcıdan ağaç bilgisi girişini sağlar
         Scanner scanner = new Scanner(System.in);
         System.out.println("\nYeni Ağaç Bilgilerini Girin:");
 
@@ -149,7 +149,7 @@ public class SevkGirme {
         System.out.print("Adet: ");
         int adet = scanner.nextInt();
 
-        KubajHesap hesap = new KubajHesap();
+        KubajHesap hesap = new KubajHesap(); // kubajhesap sınıfında hacmini hesaplatır
         double hacim;
         if (kabuk_cm == 0){
             hacim = hesap.KubajHesap(cap, boy, adet);
@@ -163,7 +163,7 @@ public class SevkGirme {
 
 
 
-    private static String getCsvDosyaAdi(String tur) {
+    private static String getCsvDosyaAdi(String tur) { // csv dosyasına yazdırırken ağaç türüne göre dosya adının seçilmesi
         return tur + ".csv";
     }
 
