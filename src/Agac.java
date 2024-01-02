@@ -58,7 +58,8 @@ class Agac {
                         fiyat = ladin.istifFiyatiniHesapla();
                     break;
                 }
-        return fiyat;
+        double yuvarlanmisFiyat = Math.round(fiyat * 100.0) / 100.0; // fiyat bilgisini virgülden sonraki 2 basamağı siler
+        return yuvarlanmisFiyat;
     }
 
     public String toCsvString() {
