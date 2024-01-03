@@ -104,7 +104,7 @@ class KullaniciYonetimi { // Kullanıcı yönetim ekranı
         return kullanicilar;
     }
 
-    public class YetkiSeviyesiAl { // kullanıcının yetki seviyesini atayan kod
+    public class YetkiSeviyesiAl { // kullanıcının yetki seviyesini atayan kod (iç içe class)
         public static void main(String[] args) {
             String yetki = yetkiSeviyesiAl();
             System.out.println("Seçilen yetki: " + yetki);

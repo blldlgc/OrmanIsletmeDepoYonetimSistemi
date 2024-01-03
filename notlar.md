@@ -4,7 +4,7 @@
 
 ### Soyut sınıf (abstract class) veya arayüz (interface) (en az 1),
     Tomrukİslem de tomruk dedi bulmada kullandık interface
-### Fazladan yükleme (overloading) (en az 3) hiçbiyerde kullanamadık :(
+### Fazladan yükleme (overloading) (en az 3)
     1. kulandık kubaj hesapta
     2. 
     3. 

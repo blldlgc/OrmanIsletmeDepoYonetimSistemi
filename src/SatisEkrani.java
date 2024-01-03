@@ -1,13 +1,15 @@
 import java.io.*;
 import java.util.*;
-import java.io.*;
 import java.nio.file.*;
 import java.util.stream.Collectors;
 
 public class SatisEkrani { // Müşterinin satış işlemi için kişisel bilgilerini alır.
+    public void SatisEkrani(){
+
+    }
 
     // Bireysel müşteri bilgilerini alır. Alınan biligileri dosyaya ekler.
-    public static void musteriBilgileriniAl(String ad, String soyad, String tc) {
+    public static void musteriBilgileriniAl(String ad, String soyad, String tc) { // overloading
         System.out.println("Bireysel müşteri bilgileri alındı: " + ad + " " + soyad + " - TC: " + tc);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("satinalma_bilgileri.csv", true))) {
             // CSV dosyasına bilgileri ekleyin
@@ -20,7 +22,7 @@ public class SatisEkrani { // Müşterinin satış işlemi için kişisel bilgil
     }
 
     // Şirket müşterilerinin bilgilerini alır.Alınan biligileri dosyaya ekler.
-    public static void musteriBilgileriniAl(String ad, String soyad, String tc, String sirketAdi) {
+    public static void musteriBilgileriniAl(String ad, String soyad, String tc, String sirketAdi) { // overloading
         System.out.println("Şirket müşterisi bilgileri alındı: " + ad + " " + soyad + " - TC: " + tc + " - Şirket Adı: " + sirketAdi);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("satinalma_bilgileri.csv", true))) {
             // CSV dosyasına bilgileri ekleyin
@@ -33,7 +35,7 @@ public class SatisEkrani { // Müşterinin satış işlemi için kişisel bilgil
     }
 
     // Şirket kullanıcılarının bilgilerini ve telefon numarasını. Alınan biligileri dosyaya ekler.
-    public static void musteriBilgileriniAl(String ad, String soyad, String tc, String sirketAdi, String telefon) {
+    public static void musteriBilgileriniAl(String ad, String soyad, String tc, String sirketAdi, String telefon) { // overloading
         System.out.println("Genel müşteri bilgileri alındı: " + ad + " " + soyad + " - TC: " + tc + " - Şirket Adı: " + sirketAdi + " - Telefon: " + telefon);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("satinalma_bilgileri.csv", true))) {
             // CSV dosyasına bilgileri ekleyin
@@ -147,7 +149,7 @@ public class SatisEkrani { // Müşterinin satış işlemi için kişisel bilgil
             }
         }
     }
-            public static void urunSecme(List<Agac> agaclar, String dosyaAdi, int tur) { // Ağaç dosyalarındaki bilgiyi okuyarak müşteriye ağaç listesi çıkarır.
+    public static void urunSecme(List<Agac> agaclar, String dosyaAdi, int tur) { // Ağaç dosyalarındaki bilgiyi okuyarak müşteriye ağaç listesi çıkarır.
         Scanner scanner = new Scanner(System.in);
 
         if (!agaclar.isEmpty()) {
@@ -208,21 +210,21 @@ public class SatisEkrani { // Müşterinin satış işlemi için kişisel bilgil
     }
 
 
-        private static void bosSatirlariSil(String dosyaAdi) { // Silinen istifin boş kalan satırını dosyadan siler.
-            try {
-                Path filePath = Paths.get(dosyaAdi);
+    private static void bosSatirlariSil(String dosyaAdi) { // Silinen istifin boş kalan satırını dosyadan siler.
+        try {
+            Path filePath = Paths.get(dosyaAdi);
 
-                // Boş satırları silmek için dosyanın içeriğini oku ve boş satırları filtrele
-                String updatedContent = Files.lines(filePath)
-                        .filter(line -> !line.trim().isEmpty())
-                        .collect(Collectors.joining(System.lineSeparator()));
+            // Boş satırları silmek için dosyanın içeriğini oku ve boş satırları filtrele
+            String updatedContent = Files.lines(filePath)
+                    .filter(line -> !line.trim().isEmpty())
+                    .collect(Collectors.joining(System.lineSeparator()));
 
-                // Dosyayı temizle ve güncellenmiş içeriği yaz
-                Files.write(filePath, updatedContent.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            // Dosyayı temizle ve güncellenmiş içeriği yaz
+            Files.write(filePath, updatedContent.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
 
 
 
